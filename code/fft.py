@@ -46,7 +46,7 @@ def analyze_bands(audio_path):
     # plt.close()  
     return sample_rate, audio_data, fft_result, frequencies, low_energy, mid_energy, high_energy
 
-def equalize_bands(sample_rate, fft_result, frequencies, low_energy, mid_energy, high_energy):
+def equalize_bands(sample_rate, audio_data, fft_result, frequencies, low_energy, mid_energy, high_energy):
     target_energy = np.mean([low_energy, mid_energy, high_energy])
     
     low_scale = np.sqrt(target_energy / low_energy) if low_energy > 0 else 1
@@ -95,8 +95,38 @@ def equalize_bands(sample_rate, fft_result, frequencies, low_energy, mid_energy,
     wavfile.write("equalized_audio.wav", sample_rate, equalized_audio.astype(np.float32))
     return equalized_audio
 
+def apply_compression(audio_data, threshold=0.5, ratio=3):
+    # https://dsp.stackexchange.com/questions/10536/help-implementing-audio-dynamic-range-compression?noredirect=1&lq=1
+    compressed = np.zeros_like(audio_data) # creating empty copy
+    sign = np.sign(audio_data) # above below waveform
+    abs_audio = np.abs(audio_data)
+    
+    epsilon = 1e-10
+    abs_audio = abs_audio + epsilon
+    
+    log_audio = np.log(abs_audio)
+    log_threshold = np.log(threshold + epsilon)
+
+    # if absolute audio less than threshoold leave it alone, else reduce it  
+    compressed_log = np.where(
+        abs_audio <= threshold,
+        log_audio,
+        (1/ratio) * log_audio + (1 - 1/ratio) * log_threshold
+    )
+    
+    compressed = np.exp(compressed_log)
+    
+    compressed *= sign
+    
+    compressed = (compressed - epsilon) / np.max(np.abs(compressed - epsilon))
+    
+    return compressed
+
 audio_path = "sound-files/my_amazing_loop.wav"
 
 results = analyze_bands(audio_path)
 
 equalized_audio = equalize_bands(*results)
+
+compressed_audio = apply_compression(equalized_audio)
+wavfile.write("compressed.wav", results[0], compressed_audio.astype(np.float32))
