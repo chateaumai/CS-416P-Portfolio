@@ -31,3 +31,14 @@ For both of these VSTs I think they do some sort of compression + reverb/saturat
 Anyways, for my project I am thinking of making a simple GUI 1-2 control VST, but try to make the backend as interesting as I can. Thinking of having some thresholds based on knob percentage that could make more drastic changes, things of that nature. 
 
 With JUCE I need to develop it in xcode but i am saving my source files in this repo. I have the starter files up today.
+
+### Juce Plugin Update
+I am running into issues building my VST with it being stored in this repo with git. 
+https://forum.juce.com/t/mac-vst3-and-au-build-fails-command-phasescriptexecution-failed-with-a-nonzero-exit-code/59909/4
+
+Gonna move it outside of the portfolio repo and periodically add the files in when I make progress. Moving it out fixed it.
+
+I have decided to make a simple 1-2 knob/setting saturation vst that will have threshold settings. The first threshhold will be a soft saturation, the second will be a warmer saturation, while the third threshold will be a shoegaze deftones drowning distortion, maybe with feedback and reverb.
+
+Each threshold I want to sound distinct from one another beyond just more saturation
+
