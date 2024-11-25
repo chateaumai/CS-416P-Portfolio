@@ -1,1 +1,8 @@
 .env
+Builds/
+JuceLibraryCode/
+*.mode1v3
+*.pbxuser
+*.xcworkspace
+*.xcuserstate
+xcuserdata/
