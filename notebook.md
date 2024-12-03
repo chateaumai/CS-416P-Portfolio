@@ -42,3 +42,17 @@ I have decided to make a simple 1-2 knob/setting saturation vst that will have t
 
 Each threshold I want to sound distinct from one another beyond just more saturation
 
+### Popgen
+I think this program is really cool, and the possible objectives seems inline with what we are learning.
+For this first commit I added an attack and release envelope to get rid of that annoying clicking.
+Seems like 50ms did the trick fine 
+
+The main logic is this
+
+```
+if len(wave) > attack:
+```
+Which checks to see if the note is long enough to have an attack / release phase,
+and if so, it takes the first / last attack / release samples and create a fade in / fade out
+
+creating that smooth transition in order to stop the clicking
