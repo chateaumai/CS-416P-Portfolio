@@ -56,3 +56,18 @@ Which checks to see if the note is long enough to have an attack / release phase
 and if so, it takes the first / last attack / release samples and create a fade in / fade out
 
 creating that smooth transition in order to stop the clicking
+
+### Popgen 2
+
+I am trying to switch it over from the sin wave but I was having issues coming up with something that sounds good.
+However I pivoted it a bit and did this
+
+```
+wave = np.sin(t)
+wave += (1/3) * np.sin(3*t) # third harmonic
+```
+
+This is creating a wave that is 3 times faster than the original and im reducing the amp of the wave by a third
+Then by adding it back I think I can get that third harmonic. But it does make the sound fuller and something I 
+am happy with for now
+

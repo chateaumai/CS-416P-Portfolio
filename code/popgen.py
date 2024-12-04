@@ -134,8 +134,9 @@ def make_note(key, n=1):
     cycles = 2 * np.pi * f * b / samplerate
     t = np.linspace(0, cycles, b)
     
-    wave = np.sin(t) 
-
+    wave = np.sin(t)
+    wave += (1/3) * np.sin(3*t) # third harmonic
+    
     attack = int(0.05 * samplerate) # 50 ms to samples
     release = int(0.05 * samplerate)
 
