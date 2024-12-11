@@ -71,3 +71,10 @@ This is creating a wave that is 3 times faster than the original and im reducing
 Then by adding it back I think I can get that third harmonic. But it does make the sound fuller and something I 
 am happy with for now
 
+### Final project
+
+I am adding it here as well just in case,
+but for the submission I added the links in the comment sections.
+
+Repo link: https://github.com/chateaumai/CS-416P-Final
+Youtube demo: https://youtu.be/zfdN4CwQ9P0?si=zJBMu624kzwlYCCM
