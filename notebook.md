@@ -76,5 +76,7 @@ am happy with for now
 I am adding it here as well just in case,
 but for the submission I added the links in the comment sections.
 
+And in the project read me I have my notes there
+
 Repo link: https://github.com/chateaumai/CS-416P-Final
 Youtube demo: https://youtu.be/zfdN4CwQ9P0?si=zJBMu624kzwlYCCM
